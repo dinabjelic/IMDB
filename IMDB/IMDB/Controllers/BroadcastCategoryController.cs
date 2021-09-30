@@ -41,22 +41,19 @@ namespace IMDB.Controllers
                     ReleaseDate = d.ReleaseDate.ToString("dd.MM.yyyy"),
                     CoverImagePath = d.CoverImagePath,
                     Casts = _dbContext.BroadcastCategoryCasts.Where(x => x.BroadcastCategoryID == d.BroadcastCategoryID)
-                .Select(x => new Cast
-                {
-                    CastID = x.CastID,
-                    FirstName = x.Cast.FirstName,
-                    LastName = x.Cast.LastName
-
-                }).ToList(),
+                    .Select(x => new Cast
+                    {
+                        CastID = x.CastID,
+                        FirstName = x.Cast.FirstName,
+                        LastName = x.Cast.LastName
+                    
+                    }).ToList(),
                   AverageReview = d.AvgScore
 
 
 
         }).ToList();
 
-
-           
-           
             model.BroadCastType = 1;
             return View(model);
         }
@@ -73,7 +70,7 @@ namespace IMDB.Controllers
             _dbContext.SaveChanges();
 
             BroadcastCategory Changes = _dbContext.BroadcastCategories.Find(x.BroadcastCategoryID);
-            Changes.AvgScore = _dbContext.Ratings.Where(x => x.BroadcastCategoryID == x.BroadcastCategoryID).Average(x => x.Review);
+            Changes.AvgScore = _dbContext.Ratings.Where(r => r.BroadcastCategoryID == x.BroadcastCategoryID).Average(x => x.Review);
             _dbContext.BroadcastCategories.Update(Changes);
             _dbContext.SaveChanges();
 
@@ -134,11 +131,8 @@ namespace IMDB.Controllers
 
               }).ToList();
 
-
-            
            
             model.BroadCastType = 1;
-
             return View(model);
         }
 

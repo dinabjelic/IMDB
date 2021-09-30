@@ -24,9 +24,6 @@ namespace Data.EF
         {
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<Rating>()
-            //   .HasKey(pp => new { pp.BroadcastCategoryID, pp.UserID });
-
             modelBuilder.Entity<BroadcastCategoryCast>()
              .HasKey(pp => new { pp.BroadcastCategoryID, pp.CastID });
         }

@@ -44,7 +44,7 @@
         background-color: whitesmoke;
         opacity: 0.7;
         width: 100%;
-        height: 43%;
+        height: 55%;
         font-family: Calibri;
         text-align: center;
         padding-top: 20px;
@@ -138,7 +138,8 @@
     .fa-star{
         color:red;
         cursor:pointer;
-        margin-top:5%;
+        margin-top:200px;
+        
     }
 </style>
 
@@ -178,7 +179,7 @@
 
 
                     <form asp-action="SaveChanges" asp-controller="BroadcastCategory">
-
+                        
                         <input class="fa fa-star checked" type="radio" onclick="window.location = '/BroadcastCategory/SaveChanges?Review=1&BroadcastCategoryID=@x.BroadcastCategoryID&AverageReview=@x.AverageReview'" />
                         <input class="fa fa-star checked" type="radio" onclick="window.location = '/BroadcastCategory/SaveChanges?Review=2&BroadcastCategoryID=@x.BroadcastCategoryID&AverageReview=@x.AverageReview'" />
                         <input class="fa fa-star checked" type="radio" onclick="window.location = '/BroadcastCategory/SaveChanges?Review=3&BroadcastCategoryID=@x.BroadcastCategoryID&AverageReview=@x.AverageReview'" />
