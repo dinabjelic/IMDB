@@ -13,9 +13,9 @@ namespace IMDB.ViewModels
 {
     public class TVSeriesController : Controller
     {
-    private readonly AppDBContext _dbContext;
-    private readonly ILogger<HomeController> _logger;
-    private readonly IWebHostEnvironment WebHostEnvironment;
+        private readonly AppDBContext _dbContext;
+        private readonly ILogger<HomeController> _logger;
+        private readonly IWebHostEnvironment WebHostEnvironment;
 
         public TVSeriesController(AppDBContext dbContext, ILogger<HomeController> logger,
            IWebHostEnvironment webhostEnvironment)
@@ -27,14 +27,13 @@ namespace IMDB.ViewModels
 
         public IActionResult ShowTVSeries()
         {
-
             var model = new ShowBroadcastCategoryVM();
             model.Page = 1;
             model.PageSize = 10;
 
-
             model.FinalResult = _dbContext.BroadcastCategories
-                .Where(t=>t.BroadcastCategoryTypeID==2).OrderByDescending(t => t.AvgScore).Take(model.PageSize)
+                .Where(t => t.BroadcastCategoryTypeID == 2)
+                .OrderByDescending(t => t.AvgScore).Take(model.PageSize)
                 .Select(d => new ShowBroadcastCategoryVM.Rows
                 {
                     BroadcastCategoryID = d.BroadcastCategoryID,
@@ -52,20 +51,10 @@ namespace IMDB.ViewModels
                 }).ToList(),
                     AverageReview = d.AvgScore
 
-
-
-
                 }).ToList();
 
-
-           
-            
-
-
             model.BroadCastType = 2;
-              return View("~/Views/BroadcastCategory/ShowBroadcastCategory.cshtml",model);
-
-
+            return View("~/Views/BroadcastCategory/ShowBroadcastCategory.cshtml", model);
         }
 
         public IActionResult TenMoreSeries(int page)
@@ -94,8 +83,6 @@ namespace IMDB.ViewModels
 
                 }).ToList(),
                     AverageReview = d.AvgScore
-
-
 
                 }).ToList();
 

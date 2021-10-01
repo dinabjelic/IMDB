@@ -17,11 +17,8 @@ namespace IMDB.ViewModels
             public string CoverImagePath { get; set; }
             public string Description { get; set; }
             public string ReleaseDate { get; set; }
-
             public List<Cast> Casts { get; set; }
             public double AverageReview { get; set; }
-
-
         }
         public List<Rows> FinalResult { get; set; }
         public IFormFile CoverImage { get; set; }

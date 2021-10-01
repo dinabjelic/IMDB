@@ -29,7 +29,7 @@ namespace IMDB.Controllers
             var model = new ShowBroadcastCategoryVM();
             model.Page = 1;
             model.PageSize = 10;
-
+           
             model.FinalResult = _dbContext.BroadcastCategories
                 .Where(t => t.BroadcastCategoryTypeID == 1)
                 .OrderByDescending(t => t.AvgScore).Take(model.PageSize)
@@ -50,9 +50,7 @@ namespace IMDB.Controllers
                     }).ToList(),
                   AverageReview = d.AvgScore
 
-
-
-        }).ToList();
+                }).ToList();
 
             model.BroadCastType = 1;
             return View(model);
@@ -77,12 +75,11 @@ namespace IMDB.Controllers
             var Findtype = Changes.BroadcastCategoryTypeID;
 
             if (Findtype == 1) { 
-            return Redirect("ShowBroadcastCategory");
+               return Redirect("ShowBroadcastCategory");
             }
             else
             {
                 return Redirect("/TvSeries/ShowTvSeries");
-
             }
         }
 
@@ -119,20 +116,18 @@ namespace IMDB.Controllers
                   ReleaseDate = d.ReleaseDate.ToString("dd.MM.yyyy"),
                   CoverImagePath = d.CoverImagePath,
                   Casts = _dbContext.BroadcastCategoryCasts.Where(x => x.BroadcastCategoryID == d.BroadcastCategoryID)
-              .Select(x => new Cast
-              {
-                  CastID = x.CastID,
-                  FirstName = x.Cast.FirstName,
-                  LastName = x.Cast.LastName
-
-              }).ToList(),
+                  .Select(x => new Cast
+                  {
+                      CastID = x.CastID,
+                      FirstName = x.Cast.FirstName,
+                      LastName = x.Cast.LastName
+                  
+                  }).ToList(),
                   AverageReview = d.AvgScore
-
 
               }).ToList();
 
            
-            model.BroadCastType = 1;
             return View(model);
         }
 
@@ -141,6 +136,7 @@ namespace IMDB.Controllers
         {
             List<ShowBroadcastCategoryVM.Rows> showBroadcast = _dbContext.BroadcastCategories
                .Where(t => t.BroadcastCategoryTypeID == 1)
+               .OrderByDescending(t=>t.AvgScore)
                .Select(d => new ShowBroadcastCategoryVM.Rows
                {
                    BroadcastCategoryID = d.BroadcastCategoryID,
@@ -163,7 +159,6 @@ namespace IMDB.Controllers
 
             ShowBroadcastCategoryVM d = new ShowBroadcastCategoryVM();
             d.FinalResult = showBroadcast;
-            d.BroadCastType = 3;
 
             return View("ShowBroadcastCategory", d);
         }
