@@ -20,16 +20,14 @@ namespace IMDB.ViewModels
 
             public List<Cast> Casts { get; set; }
             public double AverageReview { get; set; }
-            
+
 
         }
         public List<Rows> FinalResult { get; set; }
         public IFormFile CoverImage { get; set; }
         public int Review { get; set; }
         public int BroadcastCategoryID { get; set; }
-        public double AverageReview { get; set; }
         public int BroadCastType { get; set; }
-        public int ShowButton { get; set; }
         public int Page { get; set; }
         public int PageSize { get; set; }
 

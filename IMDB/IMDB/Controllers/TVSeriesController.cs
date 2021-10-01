@@ -99,12 +99,6 @@ namespace IMDB.ViewModels
 
                 }).ToList();
 
-
-           
-
-           
-            
-
             return View(model);
         }
 

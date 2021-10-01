@@ -199,11 +199,11 @@
     
     @if (Model.BroadCastType == 1)
     {
-        <a onclick="ShowDetailsMovies()" id="ShowMore">SHOW MORE</a>
+        <a onclick="ShowMoreMovies()" id="ShowMore">SHOW MORE</a>
     }
     else if (Model.BroadCastType == 2)
     {
-        <a onclick="ShowDetailsSeries()" id="ShowMore">SHOW MORE</a>
+        <a onclick="ShowMoreSeries()" id="ShowMore">SHOW MORE</a>
     }
     else
     {
@@ -215,7 +215,7 @@
 <script>
 
     
-    function ShowDetailsSeries() {
+    function ShowMoreSeries() {
 
         var page = '@(Model.Page+1)';
 
@@ -235,7 +235,7 @@
 
 
 
-    function ShowDetailsMovies() {
+    function ShowMoreMovies() {
 
         var page = '@(Model.Page + 1)';
 
